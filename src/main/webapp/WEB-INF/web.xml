@@ -5,6 +5,16 @@
 
 	<display-name>Spring MVC Application</display-name>
 
+    <filter>
+        <filter-name>http-head-filter</filter-name>
+        <filter-class>ua.web_challenge.coffee_tea_shop.filter.HttpHeadFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>http-head-filter</filter-name>
+        <servlet-name>dispatcher-servlet</servlet-name>
+    </filter-mapping>
+
     <servlet>
 		<servlet-name>dispatcher-servlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
