@@ -1,8 +1,11 @@
 package ua.web_challenge.coffee_tea_shop.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.awt.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -14,8 +17,13 @@ public class HelloController {
 		return "hello";
 	}
 
-    @RequestMapping(value = "/", method = GET)
+    @RequestMapping(value = "/redirect", method = GET)
     public String redirectToMain() {
         return "redirect:/pages/main/main.html";
+    }
+
+    @RequestMapping(value = "/", method = GET)
+    public String forwardToMain() {
+        return "forward:/pages/main/main.html";
     }
 }
