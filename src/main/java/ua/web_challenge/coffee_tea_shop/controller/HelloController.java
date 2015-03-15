@@ -1,4 +1,4 @@
-package ua.web_challenge.coffee_tea_shop;
+package ua.web_challenge.coffee_tea_shop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
