@@ -2,6 +2,9 @@ package ua.web_challenge.coffee_tea_shop.entity;
 
 import javax.persistence.*;
 
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
+
 /**
  * Created on 15.03.2015
  *
@@ -28,10 +31,6 @@ public class Drink {
     @Column(name = "id")
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Column(name = "name", length = 50, nullable = false)
@@ -104,7 +103,7 @@ public class Drink {
         this.description = description;
     }
 
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = LAZY)
     @Lob
     @Column(name = "long_desr", length = 2000)
     public String getLongDescription() {

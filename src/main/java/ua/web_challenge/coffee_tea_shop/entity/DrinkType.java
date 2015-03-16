@@ -23,10 +23,6 @@ public class DrinkType {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     @Basic
     @Column(name = "name", length = 25, nullable = false)
     public String getName() {
