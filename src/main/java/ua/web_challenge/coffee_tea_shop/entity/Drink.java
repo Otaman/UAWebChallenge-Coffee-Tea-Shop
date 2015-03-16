@@ -21,7 +21,6 @@ public class Drink {
     private Country country;
     private Producer producer;
     private String description;
-    private String longDescription;
 
     public Drink() {
     }
@@ -92,7 +91,7 @@ public class Drink {
         this.producer = producer;
     }
 
-    @Basic
+    @Basic(fetch = LAZY)
     @Lob
     @Column(name = "descr", length = 500)
     public String getDescription() {
@@ -101,16 +100,5 @@ public class Drink {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Basic(fetch = LAZY)
-    @Lob
-    @Column(name = "long_desr", length = 2000)
-    public String getLongDescription() {
-        return longDescription;
-    }
-
-    public void setLongDescription(String longDescription) {
-        this.longDescription = longDescription;
     }
 }
