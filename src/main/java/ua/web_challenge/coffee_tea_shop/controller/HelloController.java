@@ -19,11 +19,11 @@ public class HelloController {
 
     @RequestMapping(value = "/redirect", method = GET)
     public String redirectToMain() {
-        return "redirect:/pages/main/main.html";
+        return "redirect:/pages/static/main.html";
     }
 
     @RequestMapping(value = "/", method = GET)
     public String forwardToMain() {
-        return "forward:/pages/main/main.html";
+        return "forward:/pages/static/main.html";
     }
 }
