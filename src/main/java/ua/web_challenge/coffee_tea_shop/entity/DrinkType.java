@@ -16,11 +16,19 @@ public class DrinkType {
     public DrinkType() {
     }
 
+    public DrinkType(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Basic
