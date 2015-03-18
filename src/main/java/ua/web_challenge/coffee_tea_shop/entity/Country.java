@@ -11,7 +11,7 @@ import static ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNam
  * @author Bohdan Vanchuhov
  */
 @Entity
-@Table(name = "counties")
+@Table(name = "countries")
 @NamedQueries(
         @NamedQuery(name = "Country." + RANGE_QUERY,
                 query = "SELECT c FROM Country c")
