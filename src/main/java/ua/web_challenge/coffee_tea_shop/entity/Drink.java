@@ -1,9 +1,11 @@
 package ua.web_challenge.coffee_tea_shop.entity;
 
+import ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNaming;
+
 import javax.persistence.*;
 
-import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
+import static ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNaming.RANGE_QUERY;
 
 /**
  * Created on 15.03.2015
@@ -12,6 +14,11 @@ import static javax.persistence.FetchType.LAZY;
  */
 @Entity
 @Table(name = "drinks")
+@NamedQueries(
+        @NamedQuery(
+                name = "Drink." + RANGE_QUERY,
+                query = "SELECT d FROM Drink d")
+)
 public class Drink {
     private int id;
     private String name;
@@ -25,11 +32,19 @@ public class Drink {
     public Drink() {
     }
 
+    public Drink(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue
     @Column(name = "id")
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Column(name = "name", length = 50, nullable = false)
@@ -42,7 +57,7 @@ public class Drink {
     }
 
     @OneToOne
-    @Column(name = "type_fk")
+    @JoinColumn(name = "type_id")
     public DrinkType getType() {
         return type;
     }
@@ -72,7 +87,7 @@ public class Drink {
     }
 
     @OneToOne
-    @Column(name = "country_fk")
+    @JoinColumn(name = "country_id")
     public Country getCountry() {
         return country;
     }
@@ -82,7 +97,7 @@ public class Drink {
     }
 
     @OneToOne
-    @Column(name = "producer_fk")
+    @JoinColumn(name = "producer_id")
     public Producer getProducer() {
         return producer;
     }
