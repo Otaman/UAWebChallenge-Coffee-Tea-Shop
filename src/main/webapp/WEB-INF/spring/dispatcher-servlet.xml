@@ -10,7 +10,10 @@
     <context:annotation-config/>
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/pages/**" location="/WEB-INF/pages/"/>
+    <mvc:resources location="/WEB-INF/static/html/" mapping="/static/**"/>
+    <mvc:resources location="/WEB-INF/static/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/static/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/static/img/" mapping="/img/**"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
