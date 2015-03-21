@@ -1,11 +1,8 @@
 package ua.web_challenge.coffee_tea_shop.entity;
 
-import ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNaming;
-
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.LAZY;
-import static ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNaming.RANGE_QUERY;
 
 /**
  * Created on 15.03.2015
@@ -14,11 +11,6 @@ import static ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNam
  */
 @Entity
 @Table(name = "drinks")
-@NamedQueries(
-        @NamedQuery(
-                name = "Drink." + RANGE_QUERY,
-                query = "SELECT d FROM Drink d")
-)
 public class Drink {
     private int id;
     private String name;

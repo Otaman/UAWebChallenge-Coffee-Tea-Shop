@@ -11,7 +11,6 @@ import java.util.List;
 
 import static org.springframework.transaction.annotation.Propagation.REQUIRED;
 import static org.springframework.transaction.annotation.Propagation.SUPPORTS;
-import static ua.web_challenge.coffee_tea_shop.persistence.generic.JpaQueriesNaming.RANGE_QUERY;
 
 /**
  * Created on 18.03.2015
@@ -33,7 +32,9 @@ public class JpaGenericDaoImpl<T, PK extends Serializable> implements GenericDao
 
     @Override
     public List<T> findRange(int maxResults) {
-        TypedQuery<T> namedQuery = entityManager.createNamedQuery(getRangeNamedQuery(), entityClass);
+        String entityName = entityClass.getSimpleName();
+        String queryString = JpaQueries.findAllQuery(entityName);
+        TypedQuery<T> namedQuery = entityManager.createQuery(queryString, entityClass);
 
         if (maxResults > 0) {
             namedQuery.setMaxResults(maxResults);
@@ -42,8 +43,15 @@ public class JpaGenericDaoImpl<T, PK extends Serializable> implements GenericDao
         return namedQuery.getResultList();
     }
 
-    private String getRangeNamedQuery() {
-        return JpaQueriesNaming.rangeQuery(entityClass.getSimpleName());
+    @Override
+    public T findByName(String name) {
+        String entityName = entityClass.getSimpleName();
+        String queryString = JpaQueries.findByNameQuery(entityName);
+        TypedQuery<T> namedQuery = entityManager.createQuery(queryString, entityClass);
+
+        namedQuery.setParameter("name", name);
+
+        return namedQuery.getSingleResult();
     }
 
     @Override

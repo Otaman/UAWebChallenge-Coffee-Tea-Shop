@@ -12,6 +12,7 @@ public interface GenericDao<T, PK extends Serializable> {
     List<T> findRange(int maxResults);
     T add(T object);
     T findById(PK id);
+    T findByName(String name);
     T update(T object);
     void delete(T object);
 }
