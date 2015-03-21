@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <countries id="1" name="Ukraine"/>
+    <countries id="2" name="USA"/>
+    <countries id="3" name="Germany"/>
+    <countries id="4" name="Greece"/>
+</dataset>
