@@ -36,4 +36,11 @@ public class AppTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("hello"));
     }
+
+    @Test
+    public void countryById() throws Exception {
+        mockMvc.perform(get("/countryById/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("countryById"));
+    }
 }

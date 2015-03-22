@@ -3,6 +3,7 @@ package ua.web_challenge.coffee_tea_shop.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.web_challenge.coffee_tea_shop.persistence.CountryDao;
 import ua.web_challenge.coffee_tea_shop.entity.Country;
@@ -29,4 +30,14 @@ public class CountriesController {
 
         return "countries";
     }
+
+    @RequestMapping(value = "/country/{id}", method = GET)
+    public String country(@PathVariable("id") int id, Model model) {
+        Country country = countryDao.findById(id);
+
+        model.addAttribute("country", country);
+
+        return "country";
+    }
+
 }
