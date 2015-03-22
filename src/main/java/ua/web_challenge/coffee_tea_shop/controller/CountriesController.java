@@ -13,6 +13,7 @@ import ua.web_challenge.coffee_tea_shop.entity.Country;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created on 16.03.2015
@@ -47,5 +48,21 @@ public class CountriesController {
         if (country == null) {
             throw new ResourceNotFoundException();
         }
+    }
+
+    @RequestMapping(value = "/country/json/{id}", method = GET)
+    public @ResponseBody Country jsonCountry(@PathVariable("id") int id) {
+        Country country = countryDao.findById(id);
+
+        checkCountry(country);
+
+        return country;
+    }
+
+    @RequestMapping(value = "/country/json/add", method = POST)
+    public String addJsonCountry(@RequestBody Country country) {
+        countryDao.add(country);
+
+        return "forward:/countries";
     }
 }

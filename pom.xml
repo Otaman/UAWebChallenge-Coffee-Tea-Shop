@@ -25,17 +25,14 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -47,7 +44,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
@@ -75,7 +71,6 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.8.Final</version>
         </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -103,20 +98,35 @@
             <!--<version>1.6.4</version>-->
         <!--</dependency>-->
 
+        <!-- JSON Processing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.github.springtestdbunit</groupId>
             <artifactId>spring-test-dbunit</artifactId>
             <version>1.2.1</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -129,14 +139,12 @@
             </exclusions>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
@@ -148,6 +156,18 @@
                     <groupId>junit</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.jayway.jsonpath</groupId>-->
+            <!--<artifactId>json-path</artifactId>-->
+            <!--<version>1.2.0</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path-assert</artifactId>
+            <version>1.2.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -161,6 +181,11 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
