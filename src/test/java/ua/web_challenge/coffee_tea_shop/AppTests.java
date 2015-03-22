@@ -11,7 +11,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -34,13 +36,22 @@ public class AppTests {
     public void hello() throws Exception {
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("hello"));
+                .andExpect(view().name("hello"))
+                .andDo(print());
     }
 
     @Test
     public void countryById() throws Exception {
-        mockMvc.perform(get("/countryById/1"))
+        mockMvc.perform(get("/country/1"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("countryById"));
+                .andDo(print())
+                .andExpect(view().name("country"));
+    }
+
+    @Test
+    public void countryById_wrongId() throws Exception {
+        mockMvc.perform(get("/country/10"))
+                .andDo(print())
+                .andExpect(status().isNotFound());
     }
 }
