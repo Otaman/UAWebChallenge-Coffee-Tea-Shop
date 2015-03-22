@@ -43,4 +43,10 @@ public class AppTests {
                 .andExpect(status().isOk())
                 .andExpect(view().name("countryById"));
     }
+
+    @Test
+    public void countryById_wrongId() throws Exception {
+        mockMvc.perform(get("/countryById/10"))
+                .andExpect(status().isNotFound());
+    }
 }

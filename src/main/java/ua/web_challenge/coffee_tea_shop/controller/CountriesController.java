@@ -35,9 +35,13 @@ public class CountriesController {
     public String country(@PathVariable("id") int id, Model model) {
         Country country = countryDao.findById(id);
 
-        model.addAttribute("country", country);
+        if (country != null) {
+            model.addAttribute("country", country);
 
-        return "country";
+            return "country";
+        }
+
+        return null;
     }
 
 }
